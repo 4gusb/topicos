@@ -1,0 +1,13 @@
+# Carpetas de build y ejecutables
+build/
+*.o
+*.out
+*.exe
+
+# Archivos de depuración en macOS
+*.dSYM/
+build/Contents/
+
+# Configuración local
+.vscode/
+.DS_Store
