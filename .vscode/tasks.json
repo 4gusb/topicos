@@ -2,16 +2,19 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Compilar (todos los .c de src)",
-      "type": "shell",
-      "command": "bash",
-      "args": [
-        "-lc",
-        "mkdir -p build && clang -Wall -Wextra -std=c11 src/*.c -Iinclude -o build/topicos"
-      ],
-      "group": { "kind": "build", "isDefault": true },
-      "problemMatcher": "$gcc",
-      "detail": "Compila todos los .c con clang y deja el binario en build/topicos"
+        "label": "Compilar (todos los .c de src)",
+        "type": "shell",
+        "command": "bash",
+        "args": [
+            "-lc",
+            "mkdir -p build && clang -g -Wall -Wextra -std=c11 src/*.c -Iinclude -o build/topicos"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": "$gcc",
+        "detail": "Compila todos los .c y deja el binario en build/topicos"
     }
-  ]
+]
 }
