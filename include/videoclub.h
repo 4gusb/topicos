@@ -27,10 +27,10 @@ typedef struct {
 
 //FUNCIONES
 
-int generarBinario(const char * arch);   // solo declaración
-int ingresarFecha(const t_fecha * fecha);
+int generarBinario(char * arch);   // solo declaración
+int ingresarFecha(t_fecha * fecha);
 int validarFecha(const t_fecha * fecha);
 bool esBisiesto(const int * anio);
-int leerRegistro(const char * linea, const t_miembro * socio);
+int leerRegistro(char * linea, t_miembro * socio);
 
 #endif
