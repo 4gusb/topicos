@@ -32,5 +32,11 @@ int ingresarFecha(t_fecha * fecha);
 int validarFecha(const t_fecha * fecha);
 bool esBisiesto(const int * anio);
 int leerRegistro(char * linea, t_miembro * socio);
-
+int validacionesCampos(t_miembro * socio, char * mensajeValidaciones[]);
+int cmpFecha(const t_fecha * f1, const t_fecha * f2);
+int cmpDNI(long * dni, const int limite);
+int validarSexo(char * sexo);
+int cmpChar(char * charAComparar, char comparador);
+int cmpString(char * stringAComparar, char * comparador);
+int validarEmail(char * email, char * categoria);
 #endif
