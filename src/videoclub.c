@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "videoclub.h"
+#include "/Users/agustinabregant/topicos/include/videoclub.h"
 
 #define MAXLINEA 1024
 #define ANIOACTUAL 2025
@@ -186,10 +186,6 @@ int cmpDNI(long * dni, const int limite){
     return 0;
 }
 
-int validarSexo(char * sexo){
-    return (*sexo == 'F' || *sexo == 'M') ? TODOOK : ERROR;
-}
-
 int cmpChar(char * charAComparar, char comparador){
     return(*charAComparar == comparador) ? TODOOK : ERROR;
 }
@@ -200,14 +196,23 @@ int cmpString(char * stringAComparar, char * comparador){
 
 int validarEmail(char * email, char * categoria){
     if(strcmp(categoria, "MENOR") == 0){
-        if(email[0] == '\0')
+        if(email[0] == '\0'){   //chequea que el mail no este vacio (si el primer caracter es \0)
             return ERROR;
+        }    
     }
     return TODOOK;
 }
 
+int validarCategoria(char * categoria, t_fecha * fnac){
+    int edad = ANIOACTUAL - fnac->a;
+    if (MESACTUAL < fnac->m || (MESACTUAL == fnac->m && DIAACTUAL < fnac->d))
+        edad--;
 
-
+    if (edad < 18)
+        return (strcmp(categoria, "MENOR") == 0 ? TODOOK : ERROR);
+    else
+        return (strcmp(categoria, "ADULTO") == 0 ? TODOOK : ERROR);
+}
 
 
 int validacionesCampos(t_miembro * socio, char * mensajeValidaciones[]){
@@ -248,12 +253,24 @@ int validacionesCampos(t_miembro * socio, char * mensajeValidaciones[]){
 
     //Validacion Email
     if(validarEmail(socio->emailTutor, socio->categoria) == ERROR){
-        printf("\nNo existe tutor para el Menor");
+        printf("\nNo existe tutor para el menor");
         mensajeValidaciones[i] = "Menor sin tutor.";
         i++;
     }
     else
-        printf("\nMenor con tutor");
+        printf("\nEmail correcto");
+
+
+    //Validacion Categoria
+    if(validarCategoria(socio->categoria, &socio->fNac) == ERROR){
+        printf("\nLa categoria es incorrecta");
+        mensajeValidaciones[i] = "La categoria es incorrecta";
+        i++;
+    }
+    else
+        printf("\nCategoria correcta");
+
+
 
     return TODOOK;
 }

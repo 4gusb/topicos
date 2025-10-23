@@ -35,8 +35,10 @@ int leerRegistro(char * linea, t_miembro * socio);
 int validacionesCampos(t_miembro * socio, char * mensajeValidaciones[]);
 int cmpFecha(const t_fecha * f1, const t_fecha * f2);
 int cmpDNI(long * dni, const int limite);
-int validarSexo(char * sexo);
 int cmpChar(char * charAComparar, char comparador);
 int cmpString(char * stringAComparar, char * comparador);
 int validarEmail(char * email, char * categoria);
+int validarCategoria(char * categoria, t_fecha * fnac);
+
+
 #endif
